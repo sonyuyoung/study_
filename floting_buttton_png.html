@@ -70,6 +70,8 @@
         height: 50px; /* 아이콘의 높이 */
         color: white; /* 아이콘의 글자 색상 */
         margin: 15px 10px;
+        background-size: cover; /* 아이콘의 배경 이미지가 요소의 크기에 맞게 조정 */
+        background-position: center; /* 배경 이미지가 중앙에 위치하도록 설정 */
         display: grid; /* 그리드 레이아웃 사용 */
         place-items: center; /* 그리드 아이템을 중앙에 정렬 */
         z-index: 0; /* 아이콘이 버튼보다 뒤에 있도록 설정 */
@@ -80,20 +82,19 @@
 
       /* 첫 번째 플로팅 아이콘의 스타일 */
       .float-element:nth-of-type(1) {
-        background: #2cb3f0; /* 배경 색상 */
+        background-image: url("https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* 전화 아이콘 이미지 */
         box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5); /* 그림자 효과 */
       }
 
       /* 두 번째 플로팅 아이콘의 스타일 */
-
       .float-element:nth-of-type(2) {
-        background: #4caf50; /* 배경 색상 */
+        background-image: url("https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* 이메일 아이콘 이미지 */
         box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5); /* 그림자 효과 */
       }
 
       /* 세 번째 플로팅 아이콘의 스타일 */
       .float-element:nth-of-type(3) {
-        background: #ff9800; /* 배경 색상 */
+        background-image: url("https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* 채팅 아이콘 이미지 */
         box-shadow: 0 20px 20px -10px rgba(255, 152, 80, 0.5); /* 그림자 효과 */
       }
 
@@ -183,15 +184,10 @@
       <div class="floating-button">+</div>
       <!-- 플로팅 아이콘들 -->
       <span class="float-element">
-        <i class="material-icons">phone</i>
         <!-- 전화 아이콘 -->
       </span>
+      <span class="float-element"> </span>
       <span class="float-element">
-        <i class="material-icons">email</i>
-        <!-- 이메일 아이콘 -->
-      </span>
-      <span class="float-element">
-        <i class="material-icons">chat</i>
         <!-- 채팅 아이콘 -->
       </span>
     </div>
