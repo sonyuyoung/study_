@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .overlay {
+        /* border-width: 10px;
+    border-style: solid;
+    border-image-source: linear-gradient(red, blue); */
+        /* border-image-slice: fill 1; */
+        /* border-image-slice: 1; */
+
+        /* hsl : 색상표현방식 
+    Hue (색상):  0도에서 360도까지의 값 
+    *0도는 빨간색
+    120도는 초록색
+    240도는 파란색
+    Saturation (채도): 색상의 순수도를 나타내며, 0%에서 100%까지의 값
+    0%는 회색(무채색)이며,
+    100%는 가장 선명한 색상을 의미함
+    Lightness (명도): 색상의 밝기를 나타내며, 0%는 검은색, 100%는 흰색, 50%는 기본 색상
+
+    /* 두 가지 색상을 선형적으로 연결하여 그라디언트를 만듬 */
+        border-image: linear-gradient(
+            /* 240은 색상 (파랑), 100%는 채도, 20%는 명도, / 0.6은 알파 값(투명도) */
+              hsl(240 100% 20% / 0.6),
+            hsl(0 100% 20% / 0.6)
+          )
+          fill 1;
+      }
+
+      .hero {
+        background-image: url("https://images.unsplash.com/photo-1697229299093-c920ab53bfb1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTU2OTIzNzZ8&ixlib=rb-4.0.3&q=85");
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-block-size: 80vh;
+        place-content: center;
+        text-align: center;
+      }
+
+      @layer general-styling {
+        html {
+          color-scheme: dark light;
+          font-family: system-ui;
+          line-height: 1.6;
+        }
+
+        body {
+          font-size: 2rem;
+          margin: 1rem;
+        }
+
+        h1 {
+          line-height: 1;
+          color: white;
+        }
+        p {
+          line-height: 1;
+          color: white;
+        }
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="hero overlay">
+      <h1>Overlay a background image the easy way</h1>
+      <p>I wish I'd known about this one earlier!</p>
+    </section>
+  </body>
+</html>

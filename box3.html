@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Boxes</title>
+    <style>
+      /* Assuming box sizing is "border-box" on all elements */
+      * {
+        box-sizing: border-box;
+      }
+
+      .flex {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap; /* 박스가 화면에 맞게 감싸도록 설정 */
+      }
+
+      /* .flex 클래스 내의 모든 요소 >* */
+      .flex > * {
+        flex: 1 1 calc(33.33% - 1rem); /* PC에서는 3개 보이도록 설정 */
+        min-width: 0;
+        padding: 10px;
+        background: lightblue;
+      }
+
+      .flex > :nth-child(2) {
+        padding: 2rem;
+      }
+
+      /* 모바일 화면에 대한 스타일 */
+      @media (max-width: 768px) {
+        .flex > * {
+          flex: 1 1 100%; /* 모바일에서는 1개씩 보이도록 설정 */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex">
+      <div>
+        아무것도 배우지않고 있기 보다는 쓸모없는 것이라도 배우는 편이 낫다
+      </div>
+      <div>창조적인 삶을 살려면 내가 틀릴지도 모른다는 공포를 버려야 한다.</div>
+      <div>
+        성공한 사람이 되려고 노력하기보다 가치있는 사람이 되려고 노력하라.
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>플로팅버튼</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      /* 모든 요소의 기본 여백과 패딩을 제거 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 페이지의 기본 스타일 설정 */
+      body {
+        background: #eaedf2; /* 배경 색상 */
+        font-family: "Roboto", sans-serif; /* 폰트 설정 */
+      }
+
+      /* 플로팅 버튼 컨테이너의 기본 스타일 */
+      .floating-container {
+        position: fixed; /* 화면에 고정된 위치 */
+        width: 100px; /* 컨테이너의 너비 */
+        height: 100px; /* 컨테이너의 높이 */
+        bottom: 0; /* 화면 하단에 위치 */
+        right: 0; /* 화면 우측에 위치 */
+        margin: 35px 25px; /* 화면 모서리에서 컨테이너까지의 여백 */
+      }
+
+      /* 마우스를 올렸을 때의 플로팅 버튼 컨테이너 스타일 */
+      .floating-container:hover {
+        height: 300px; /* 컨테이너의 높이를 300px로 증가 */
+      }
+
+      /* 마우스를 올렸을 때 플로팅 버튼의 스타일 */
+      .floating-container:hover .floating-button {
+        box-shadow: 0 10px 25px rgba(44, 179, 240, 0.6); /* 그림자 효과 */
+        transform: translateY(5px); /* 버튼을 5px 아래로 이동 */
+        transition: all 0.3s; /* 모든 속성의 변화에 대해 0.3초 애니메이션 적용 */
+      }
+
+      /* 플로팅 버튼의 기본 스타일 */
+      .floating-button {
+        position: absolute; /* 위치를 절대적으로 설정 */
+        width: 65px; /* 버튼의 너비 */
+        height: 65px; /* 버튼의 높이 */
+        background: #2cb3f0; /* 버튼의 배경 색상 */
+        bottom: 0; /* 컨테이너의 하단에 위치 */
+        border-radius: 50%; /* 버튼을 원형으로 만들기 위한 테두리 반경 설정 */
+        left: 0; /* 왼쪽에 위치 */
+        right: 0; /* 오른쪽에 위치 */
+        line-height: 65px; /* 텍스트의 수직 정렬을 중앙으로 설정 */
+        text-align: center; /* 텍스트를 중앙에 정렬 */
+        font-size: 23px; /* 텍스트의 크기 */
+        z-index: 100; /* 버튼이 다른 요소들보다 위에 오도록 설정 */
+        box-shadow: 0 10px 25px -5px rgba(44, 179, 240, 0.6); /* 그림자 효과 */
+        cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+      }
+
+      /* 플로팅 아이콘 요소의 기본 스타일 */
+      .float-element {
+        position: relative; /* 위치를 절대적으로 설정 */
+        display: block; /* 블록 요소로 표시 */
+        border-radius: 50%; /* 아이콘을 원형으로 만들기 위한 테두리 반경 설정 */
+        width: 50px; /* 아이콘의 너비 */
+        height: 50px; /* 아이콘의 높이 */
+        color: white; /* 아이콘의 글자 색상 */
+        margin: 15px 10px;
+        display: grid; /* 그리드 레이아웃 사용 */
+        place-items: center; /* 그리드 아이템을 중앙에 정렬 */
+        z-index: 0; /* 아이콘이 버튼보다 뒤에 있도록 설정 */
+        opacity: 0;
+        /* 기본적으로 숨겨짐 */
+        cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+      }
+
+      /* 첫 번째 플로팅 아이콘의 스타일 */
+      .float-element:nth-child(4) {
+        background: #2cb3f0; /* 배경 색상 */
+        box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5); /* 그림자 효과 */
+      }
+
+      /* 두 번째 플로팅 아이콘의 스타일 */
+      .float-element:nth-child(2) {
+        background: #4caf50; /* 배경 색상 */
+        box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5); /* 그림자 효과 */
+      }
+
+      /* 세 번째 플로팅 아이콘의 스타일 */
+      .float-element:nth-child(3) {
+        background: #ff9800; /* 배경 색상 */
+        box-shadow: 0 20px 20px -10px rgba(255, 152, 80, 0.5); /* 그림자 효과 */
+      }
+
+      /* 플로팅 아이콘의 애니메이션 */
+      @keyframes come-in {
+        0% {
+          opacity: 0; /* 애니메이션 시작 시 투명함 */
+        }
+        30% {
+          transform: translateX(-50%) scale(0.4); /* 애니메이션 중간에 아이콘이 왼쪽으로 이동하고 축소됨 */
+        }
+        70% {
+          transform: translateX(0%) scale(1.2); /* 애니메이션 후반에 아이콘이 원위치로 돌아오고 확대됨 */
+        }
+        100% {
+          transform: scale(1); /* 애니메이션 완료 시 원래 크기로 돌아옴 */
+          opacity: 1; /* 애니메이션 완료 시 완전히 보임 */
+        }
+      }
+
+      /* 플로팅 컨테이너에 마우스를 올렸을 때 첫 번째 아이콘의 애니메이션 */
+      .floating-container:hover .float-element:nth-child(2) {
+        animation: come-in 0.4s forwards 0.2s; /* 애니메이션을 0.4초 동안 실행, 0.2초 지연 후 시작 */
+      }
+
+      /* 플로팅 컨테이너에 마우스를 올렸을 때 두 번째 아이콘의 애니메이션 */
+      .floating-container:hover .float-element:nth-child(3) {
+        animation: come-in 0.4s forwards 0.4s; /* 애니메이션을 0.4초 동안 실행, 0.4초 지연 후 시작 */
+      }
+
+      /* 플로팅 컨테이너에 마우스를 올렸을 때 세 번째 아이콘의 애니메이션 */
+      .floating-container:hover .float-element:nth-child(4) {
+        animation: come-in 0.4s forwards 0.6s; /* 애니메이션을 0.4초 동안 실행, 0.6초 지연 후 시작 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 플로팅 버튼 컨테이너 -->
+    <div class="floating-container">
+      <!-- 플로팅 버튼 -->
+      <div class="floating-button">+</div>
+      <!-- 플로팅 아이콘들 -->
+      <span class="float-element">
+        <i class="material-icons">phone</i>
+        <!-- 전화 아이콘 -->
+      </span>
+      <span class="float-element">
+        <i class="material-icons">email</i>
+        <!-- 이메일 아이콘 -->
+      </span>
+      <span class="float-element">
+        <i class="material-icons">chat</i>
+        <!-- 채팅 아이콘 -->
+      </span>
+    </div>
+  </body>
+</html>
