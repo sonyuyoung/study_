@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 18px;
+    }
+    body {
+      background: #141414;
+    }
+    /* 각섹션 사이즈  */
+    section {
+      min-height: 90vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section:nth-child(1) {
+      color: #fff;
+    }
+    section:nth-child(2) {
+      color: #141414;
+      background-color: #fff;
+    }
+    section:nth-child(3) {
+      color: #fff;
+      background-color: #141414;
+    }
+    section:nth-child(4) {
+      color: #141414;
+      background-color: #fff;
+    }
+
+    section .container {
+      margin: 100px;
+      font-size: 60px;
+    }
+    section h1 {
+      font-size: 60px;
+    }
+    section h2 {
+      font-size: 40px;
+      text-align: center;
+      /*  대문자?  */
+      text-transform: uppercase;
+    }
+
+    section .cards {
+      /* 가로로 정렬 */
+      display: flex;
+    }
+
+    .reveal {
+      position: relative;
+      transform: translateY(200px);
+      opacity: 0;
+      transition: all 1s ease;
+      /* transform: scale(0.8); */
+    }
+    .reveal.active {
+      position: relative;
+      transform: translateY(0px);
+      /* transform: scale(1); */
+      opacity: 1;
+    }
+    section .cards .text-card {
+      width: 300px;
+      height: 300px;
+      background-color: #2696e9;
+      margin: 20px;
+      padding: 20px;
+    }
+    section .cards .text-card h3 {
+      font-size: 25px;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .cards .text-card {
+      width: 300px;
+      height: 300px;
+      background-color: #2696e9;
+      margin: 20px;
+      padding: 20px;
+      opacity: 0; /* 기본적으로 투명하게 시작 */
+      transform: scale(0.8); /* 축소된 상태로 시작 */
+      transition: opacity 1s, transform 1s; /* 애니메이션 효과 */
+    }
+
+    .cards .text-card.active {
+      opacity: 1; /* 활성화되면 불투명하게 */
+      transform: scale(1); /* 원래 크기로 확대 */
+    }
+    @media (max-width: 900px) {
+      section h1 {
+        font-size: 40px;
+      }
+
+      section .cards {
+        /* 세로로 정렬 */
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+  <body>
+    <section>
+      <h1>creative club</h1>
+    </section>
+    <section>
+      <div class="container reveal">
+        <h2>The 2nd round of the creative club</h2>
+        <div class="cards">
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container reveal">
+        <h2>The 2nd round of the creative club</h2>
+        <div class="cards">
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container reveal">
+        <h2>The 2nd round of the creative club</h2>
+        <div class="cards">
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+          <div class="text-card">
+            <h3>오늘의 명언</h3>
+            <p>하루에 3시간을 걸으면 7년 후에 지구를 한바퀴 돌 수 있다</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      window.addEventListener("scroll", reveal);
+
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        var windowheight = window.innerHeight;
+        var revealpoint = 150;
+
+        for (var i = 0; i < reveals.length; i++) {
+          var revealtop = reveals[i].getBoundingClientRect().top;
+
+          if (revealtop < windowheight - revealpoint) {
+            reveals[i].classList.add("active");
+
+            // cards 내부의 text-card를 순차적으로 활성화
+            var cards = reveals[i].querySelector(".cards");
+            var textCards = cards.querySelectorAll(".text-card");
+            textCards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add("active");
+              }, index * 300); // 각 카드가 300ms 간격으로 애니메이션
+            });
+          } else {
+            reveals[i].classList.remove("active");
+
+            // cards 내부의 text-card를 비활성화
+            var cards = reveals[i].querySelector(".cards");
+            var textCards = cards.querySelectorAll(".text-card");
+            textCards.forEach((card) => {
+              card.classList.remove("active");
+            });
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
