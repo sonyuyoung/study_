@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>플로팅버튼</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* 모든 요소의 기본 여백과 패딩을 제거 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 페이지의 기본 스타일 설정 */
+    body {
+      background: #eaedf2;
+      /* 배경 색상 */
+      font-family: "Roboto", sans-serif;
+      /* 폰트 설정 */
+    }
+
+    /* 플로팅 버튼 컨테이너의 기본 스타일 ( 위에3개 ) */
+    .floating-container { 
+      position: fixed;
+      /* 화면에 고정된 위치 */
+      width: 100px;
+      /* 컨테이너의 너비 */
+      height: 100px;
+      /* 컨테이너의 높이 */
+      bottom: 0;
+      /* 화면 하단에 위치 */
+      right: 40px;
+      /* 화면 우측에 위치 */
+      margin: 35px 0px;
+      justify-content: center;
+      align-items: center;
+      /* 화면 모서리에서 컨테이너까지의 여백 */
+    }
+
+    /* 마우스를 올렸을 때의 플로팅 버튼 컨테이너 스타일 */
+    .floating-container:hover {
+      height: 300px;
+      /* 컨테이너의 높이를 300px로 증가 */
+    }
+
+    /* 마우스를 올렸을 때 플로팅 버튼의 스타일 */
+    .floating-container:hover .floating-button {
+      box-shadow: 0 10px 25px rgba(44, 179, 240, 0.6);
+      /* 그림자 효과 */
+      transform: translateY(5px);
+      /* 버튼을 5px 아래로 이동 */
+      transition: all 0.3s;
+      /* 모든 속성의 변화에 대해 0.3초 애니메이션 적용 */
+    }
+
+    /* 마우스를 올렸을 때의 플로팅 버튼 컨테이너 스타일 */
+    .floating-container.active {
+      height: 500px;
+      /* 컨테이너의 높이를 300px로 증가 */
+
+    }
+
+    .floating-button {
+      position: absolute;
+      /* 위치를 절대적으로 설정 */
+      width: 120px;
+      /* 적절한 크기로 조정 */
+      height: 120px;
+      /* 적절한 크기로 조정 */
+      background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/657e4572493e0.png");
+      background-size: cover;
+      /* 이미지 크기에 맞게 조정 */
+      background-repeat: no-repeat;
+      /* 이미지 반복 방지 */
+      background-position: center;
+      /* 이미지 가운데 정렬 */
+      border-radius: 50%;
+      /* 원형 버튼 */
+      position: fixed;
+      /* 화면에 고정 */
+      bottom: 50px;
+      /* 화면 하단에서의 위치 조정 */
+      right: 40px;
+      /* 화면 우측에서의 위치 조정 */
+      z-index: 100;
+      /* 버튼이 다른 요소들보다 위에 오도록 설정 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      /* 그림자 효과 (선택 사항) */
+      cursor: pointer;
+      /* 마우스 커서를 포인터로 변경 */
+    }
+
+
+    /* 플로팅 아이콘 요소의 기본 스타일 */
+    .float-element {
+      position: relative;
+      /* 위치를 절대적으로 설정 */
+      display: block;
+      /* 블록 요소로 표시 */
+      border-radius: 50%;
+      /* 아이콘을 원형으로 만들기 위한 테두리 반경 설정 */
+      width: 80px;
+      /* 아이콘의 너비 */
+      height: 80px;
+      /* 아이콘의 높이 */
+      color: white;
+      /* 아이콘의 글자 색상 */
+      margin: 15px 0px;
+      background-size: cover;
+      /* 아이콘의 배경 이미지가 요소의 크기에 맞게 조정 */
+      background-position: center;
+      /* 배경 이미지가 중앙에 위치하도록 설정 */
+      display: grid;
+      /* 그리드 레이아웃 사용 */
+      place-items: center;
+      /* 그리드 아이템을 중앙에 정렬 */
+      z-index: 0;
+      /* 아이콘이 버튼보다 뒤에 있도록 설정 */
+      opacity: 0;
+      /* 기본적으로 숨겨짐 */
+      cursor: pointer;
+      /* 마우스 커서를 포인터로 변경 */
+    }
+
+    /* 첫 번째 플로팅 아이콘의 스타일 */
+    .float-element:nth-of-type(1) {
+      background-image: url("https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      /* 전화 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+      /* 그림자 효과 */
+    }
+
+    /* 두 번째 플로팅 아이콘의 스타일 */
+    .float-element:nth-of-type(2) {
+      background-image: url("https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      /* 이메일 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+      /* 그림자 효과 */
+    }
+
+    /* 세 번째 플로팅 아이콘의 스타일 */
+    .float-element:nth-of-type(3) {
+      background-image: url("https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      /* 채팅 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(255, 152, 80, 0.5);
+      /* 그림자 효과 */
+    }
+
+    /* 플로팅 아이콘의 애니메이션 */
+    @keyframes come-in {
+      0% {
+        opacity: 0;
+        /* 애니메이션 시작 시 투명함 */
+      }
+
+      30% {
+        transform: translateX(-50%) scale(0.4);
+        /* 애니메이션 중간에 아이콘이 왼쪽으로 이동하고 축소됨 */
+      }
+
+      70% {
+        transform: translateX(0%) scale(1.2);
+        /* 애니메이션 후반에 아이콘이 원위치로 돌아오고 확대됨 */
+      }
+
+      100% {
+        transform: scale(1);
+        /* 애니메이션 완료 시 원래 크기로 돌아옴 */
+        opacity: 1;
+        /* 애니메이션 완료 시 완전히 보임 */
+      }
+    }
+
+
+
+    /* 클릭 시 아이콘 애니메이션 */
+    .floating-container.active .float-element {
+
+      transform: translateY(0);
+      /* 애니메이션 완료 시 원래 위치로 돌아옴 */
+    }
+
+    /* 클릭 시 첫 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(1) {
+      animation: come-in 0.4s forwards 0.2s;
+      /* 애니메이션을 0.4초 동안 실행, 0.2초 지연 후 시작 */
+    }
+
+    /* 클릭 시 두 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(2) {
+      animation: come-in 0.4s forwards 0.4s;
+      /* 애니메이션을 0.4초 동안 실행, 0.4초 지연 후 시작 */
+    }
+
+    /* 클릭 시 세 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(3) {
+      animation: come-in 0.4s forwards 0.6s;
+      /* 애니메이션을 0.4초 동안 실행, 0.6초 지연 후 시작 */
+    }
+
+    /* 모바일 및 작은 화면을 위한 스타일 조정 */
+    @media (max-width: 768px) {
+      .floating-container {
+        width: 100px;
+        /* 컨테이너의 너비 */
+        height: 100px;
+        /* 컨테이너의 높이 */
+        right: 25px;
+        margin: 20px 10px;
+        /* 화면 모서리에서 컨테이너까지의 여백 */
+      }
+
+      .floating-button {
+        width: 120px;
+        /* 버튼의 너비 */
+        height: 120px;
+        /* 버튼의 높이 */
+        line-height: 45px;
+        /* 텍스트의 수직 정렬을 중앙으로 설정 */
+        font-size: 18px;
+        /* 텍스트의 크기 */
+        bottom: 50px;
+        /* 화면 하단에서의 위치 조정 */
+        right: 20px;
+        /* 화면 우측에서의 위치 조정 */
+      }
+
+      .float-element {
+
+        width: 100px;
+        /* 아이콘의 너비 */
+        height: 100px;
+        /* 아이콘의 높이 */
+        font-size: 20px;
+        /* 아이콘 텍스트의 크기 */
+        margin: 10px 0px;
+        /* 아이콘 사이의 여백 */
+
+      }
+
+      /* 마우스를 올렸을 때의 플로팅 버튼 컨테이너 스타일 */
+      .floating-container.active {
+        height: 500px;
+        /* 컨테이너의 높이를 300px로 증가 */
+
+      }
+    }
+
+    /* 모바일 및 더 작은 화면을 위한 스타일 조정 */
+    @media (max-width: 480px) {
+      
+      .floating-container {
+        width: 100px;
+        /* 컨테이너의 너비 */
+        height: 100px;
+        /* 컨테이너의 높이 */
+        margin: 15px 0px;
+        /* 화면 모서리에서 컨테이너까지의 여백 */
+      }
+
+      .floating-button {
+        width: 100px;
+        /* 버튼의 너비 */
+        height: 100px;
+        /* 버튼의 높이 */
+        line-height: 40px;
+        /* 텍스트의 수직 정렬을 중앙으로 설정 */
+        font-size: 16px;
+        right: 30px;
+        /* 텍스트의 크기 */
+      }
+
+      .float-element {
+        width: 80px;
+        /* 아이콘의 너비 */
+        height: 80px;
+        /* 아이콘의 높이 */
+        font-size: 18px;
+        /* 아이콘 텍스트의 크기 */
+        margin: 8px 4px;
+        /* 아이콘 사이의 여백 */
+      }
+
+      /* 마우스를 올렸을 때의 플로팅 버튼 컨테이너 스타일 */
+      .floating-container.active {
+        height: 450px;
+        /* 컨테이너의 높이를 300px로 증가 */
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 플로팅 버튼 컨테이너 -->
+  <div class="floating-container">
+    <!-- 플로팅 버튼 -->
+    <div class="floating-button"></div>
+    <!-- 플로팅 아이콘들 -->
+    <span class="float-element">
+      <!-- 전화 아이콘 -->
+    </span>
+    <span class="float-element"> </span>
+    <span class="float-element">
+      <!-- 채팅 아이콘 -->
+    </span>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const floatingButton = document.querySelector(".floating-button");
+      const floatingContainer = document.querySelector(".floating-container");
+
+      floatingButton.addEventListener("click", () => {
+        floatingContainer.classList.toggle("active"); // 클릭 시 active 클래스 토글
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,105 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <style>
+<style>
     @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Noto Sans KR", sans-serif;
-      font-size: 18px;
-    }
-    body {
-      background: #141414;
-    }
-    /* 각섹션 사이즈  */
-    section {
-      min-height: 90vw;
+  
+    /* 각 섹션 사이즈 */
+    #s20240729e1e415aedfc70 {
+      min-height: 50vw;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
-    section:nth-child(1) {
-      color: #fff;
-    }
-    section:nth-child(2) {
-      color: #141414;
-      background-color: #fff;
-    }
-    section:nth-child(3) {
-      color: #fff;
-      background-color: #141414;
-    }
-    section:nth-child(4) {
-      color: #141414;
-      background-color: #fff;
-    }
-
-    section .container {
+  
+    #start .container {
       margin: 100px;
+    }
+  
+    #start h1 {
       font-size: 60px;
     }
-    section h1 {
-      font-size: 60px;
-    }
-    section h2 {
+  
+    #start h2 {
       font-size: 40px;
       text-align: center;
-      /*  대문자?  */
       text-transform: uppercase;
     }
-
-    /* section .cards { */
-    /* 가로로 정렬 */
-    /* display: flex;
-    } */
-
-    section .cards {
+  
+    #start .cards {
       display: flex;
       flex-wrap: wrap; /* 요소가 줄 바꿈되도록 설정 */
       justify-content: center; /* 중앙 정렬 */
       align-items: center; /* 수직 중앙 정렬 */
     }
-
+  
     .reveal {
       position: relative;
       transform: translateY(200px);
       opacity: 0;
       transition: all 1s;
-      /* transform: scale(0.8); */
     }
+  
     .reveal.active {
       position: relative;
       transform: translateY(0px);
-      /* transform: scale(1); */
       opacity: 1;
     }
-    section .cards .text-card {
-      width: 300px;
-      height: 300px;
-      background-color: #2696e9;
-      margin: 20px;
-      padding: 20px;
-    }
-    section .cards .text-card h3 {
-      font-size: 25px;
-      text-align: center;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .cards .text-card {
+  
+    #start .cards .text-card {
       border-radius: 50%;
-      width: 300px;
-      height: 300px;
+      width: 200px; /* 원형 카드의 너비 */
+      height: 200px; /* 원형 카드의 높이 */
       background-color: #2696e9;
-      margin: 20px;
+      margin: 10px;
       padding: 20px;
+      overflow: hidden;
       opacity: 0; /* 기본적으로 투명하게 시작 */
       transform: scale(0.8); /* 축소된 상태로 시작 */
       transition: none; /* 애니메이션 효과 제거 */
@@ -109,36 +60,78 @@
       align-items: center; /* 수평 중앙 정렬 */
       text-align: center; /* 텍스트를 중앙 정렬 */
     }
-
-    .cards .text-card h3,
-    .cards .text-card p {
+  
+    #start .cards .text-card h3 {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+  
+    #start .cards .text-card p {
+      font-size: 18px;
       margin: 0; /* 기본 여백 제거 */
     }
-    .cards .text-card.active {
+  
+    #start .cards .text-card.active {
       opacity: 1; /* 활성화되면 불투명하게 */
       transform: scale(1); /* 원래 크기로 확대 */
       transition: none; /* 애니메이션 효과 제거 */
     }
+  
     @media (max-width: 900px) {
-      section h1 {
+      #start h1 {
         font-size: 40px;
       }
-
-      section .cards {
-        /* 세로로 정렬 */
-        flex-direction: column;
-        align-items: center ;
-        border:5px solid #fff;
+  
+      #start .cards {
+        flex-direction: row; /* 한 줄에 2개씩 보이도록 설정 */
+        justify-content: space-between; /* 카드 간격 조정 */
+        
+      }
+  
+      #start .cards .text-card {
+        width: 150px; /* 모바일 화면에서 원형 카드의 너비 */
+        height: 150px; /* 모바일 화면에서 원형 카드의 높이 */
+        margin: 10px; /* 카드 사이의 여백 조정 */
+      }
+  
+      #start .cards .text-card h3 {
+        font-size: 16px; /* 모바일 화면에서 글자 크기 조정 */
+      }
+  
+      #start .cards .text-card p {
+        font-size: 14px; /* 모바일 화면에서 글자 크기 조정 */
+      }
+    }
+  
+    @media (max-width: 600px) {
+      #start h1 {
+        font-size: 30px;
+      }
+  
+      #start .cards {
+        flex-direction: row; /* 한 줄에 2개씩 보이도록 설정 */
+        justify-content: space-between; /* 카드 간격 조정 */
+      }
+  
+      #start .cards .text-card {
+        width: 150px; /* 모바일 화면에서 원형 카드의 너비 */
+        height: 150px; /* 모바일 화면에서 원형 카드의 높이 */
+        margin: 5px; /* 카드 사이의 여백 조정 */
+      }
+  
+      #start .cards .text-card h3 {
+        font-size: 14px; /* 모바일 화면에서 글자 크기 조정 */
+      }
+  
+      #start .cards .text-card p {
+        font-size: 12px; /* 모바일 화면에서 글자 크기 조정 */
       }
     }
   </style>
   <body>
-    <section>
-      <h1>creative club</h1>
-    </section>
-    <section>
+
+    <section id="start">
       <div class="container reveal">
-        <h2>The 2nd round of the creative club</h2>
         <div class="cards">
           <div class="text-card">
             <h3>오늘의 명언</h3>
@@ -221,4 +214,4 @@
       }
     </script>
   </body>
-</html>
+

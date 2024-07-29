@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+    /* 각 섹션 사이즈 */
+    #start {
+      min-height: 50vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #start .container {
+      display: flex; /* 추가된 부분 */
+      flex-direction: column; /* 수직 정렬 */
+      align-items: center; /* 중앙 정렬 */
+      margin: 100px;
+    }
+
+    #start h1 {
+      font-size: 60px;
+    }
+
+    #start h2 {
+      font-size: 40px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #start .cards {
+      display: flex;
+      flex-wrap: wrap; /* 요소가 줄 바꿈되도록 설정 */
+      justify-content: center; /* 중앙 정렬 */
+      align-items: center; /* 수직 중앙 정렬 */
+    
+      gap: 10px; /* 카드 간의 간격 */
+    }
+
+    .reveal {
+      position: relative;
+      transform: translateY(200px);
+      opacity: 0;
+      transition: all 1s;
+    }
+
+    .reveal.active {
+      position: relative;
+      transform: translateY(0px);
+      opacity: 1;
+    }
+
+    #start .cards .text-card {
+      border-radius: 50%;
+      width: 200px; /* 원형 카드의 너비 */
+      height: 200px; /* 원형 카드의 높이 */
+      background-color: #2696e9;
+      padding: 20px;
+      overflow: hidden;
+      opacity: 0; /* 기본적으로 투명하게 시작 */
+      transform: scale(0.8); /* 축소된 상태로 시작 */
+      transition: none; /* 애니메이션 효과 제거 */
+      display: flex; /* 플렉스 박스 사용 */
+      flex-direction: column; /* 세로 방향으로 정렬 */
+      justify-content: center; /* 수직 중앙 정렬 */
+      align-items: center; /* 수평 중앙 정렬 */
+      text-align: center; /* 텍스트를 중앙 정렬 */
+    }
+
+    #start .cards .text-card h3 {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    #start .cards .text-card p {
+      font-size: 18px;
+      margin: 0; /* 기본 여백 제거 */
+    }
+
+    #start .cards .text-card.active {
+      opacity: 1; /* 활성화되면 불투명하게 */
+      transform: scale(1); /* 원래 크기로 확대 */
+      transition: none; /* 애니메이션 효과 제거 */
+    }
+
+    @media (max-width: 900px) {
+      #start h1 {
+        font-size: 40px;
+      }
+
+      #start .cards {
+        flex-direction: row; /* 한 줄에 2개씩 보이도록 설정 */
+        justify-content: center; /* 중앙 정렬 */
+        gap: 15px; /* 카드 간의 간격 조정 */
+      }
+
+      #start .cards .text-card {
+        width: 150px; /* 모바일 화면에서 원형 카드의 너비 */
+        height: 150px; /* 모바일 화면에서 원형 카드의 높이 */
+      }
+
+      #start .cards .text-card h3 {
+        font-size: 16px; /* 모바일 화면에서 글자 크기 조정 */
+      }
+
+      #start .cards .text-card p {
+        font-size: 14px; /* 모바일 화면에서 글자 크기 조정 */
+      }
+    }
+    @media (max-width: 600px) {
+  #start h1 {
+    font-size: 30px;
+  }
+
+  #start .cards {
+    flex-direction: row; /* 카드가 한 줄로 배치되도록 설정 */
+    justify-content: center; /* 중앙 정렬 */
+    flex-wrap: wrap; /* 카드가 줄 바꿈되도록 설정 */
+    gap: 15px; /* 카드 간의 간격 조정 */
+  }
+
+  #start .cards .text-card {
+    width: calc(50% - 15px); /* 한 줄에 두 개의 카드가 보이도록 너비 설정 */
+    height: 150px; /* 모바일 화면에서 원형 카드의 높이 */
+    margin: 0; /* 카드 사이의 여백 제거 */
+    border-radius: 50%; /* 원형 카드의 형태 유지 */
+  }
+
+  #start .cards .text-card h3 {
+    font-size: 14px; /* 모바일 화면에서 글자 크기 조정 */
+  }
+
+  #start .cards .text-card p {
+    font-size: 12px; /* 모바일 화면에서 글자 크기 조정 */
+  }
+  #start .cards .text-card.active {
+      opacity: 1; /* 활성화되면 불투명하게 */
+      transform: scale(1); /* 원래 크기로 확대 */
+      transition: none; /* 애니메이션 효과 제거 */
+    }
+
+}
+  </style>
+</head>
+<body>
+  <section id="start">
+    <div class="container reveal">
+      <div class="cards">
+        <div class="text-card">
+          <h3>높은성공률</h3>
+          <p>컴퓨터 분석 수술로 오차없는 시술이 가능합니다.</p>
+        </div>
+        <div class="text-card">
+          <h3>빠른회복</h3>
+          <p>잇몸절개를 하지않아 출혈과 붓기가적어 회복이 빠릅니다.</p>
+        </div>
+        <div class="text-card">
+          <h3>정밀함</h3>
+          <p>정확하게 설계된 가이드를 장착하고 수술합니다.</p>
+        </div>
+        <div class="text-card">
+          <h3>전신질환자가능 </h3>
+          <p>출혈과회복이 빨라 당뇨 , 고혈압 등의 전신질환자도 가능합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // 스크롤 이벤트가 발생할 때마다 reveal 함수가 호출되도록 설정합니다.
+    window.addEventListener("scroll", reveal);
+
+    function reveal() {
+      // '.reveal' 클래스를 가진 모든 요소를 선택합니다.
+      var reveals = document.querySelectorAll(".reveal");
+
+      // 현재 창의 높이를 가져옵니다.
+      var windowheight = window.innerHeight;
+
+      // 요소가 화면에 보이기 시작하는 임계점으로, 요소의 상단이 창의 높이에서 150px 떨어진 지점입니다.
+      var revealpoint = 150;
+
+      // 모든 '.reveal' 요소를 순회합니다.
+      for (var i = 0; i < reveals.length; i++) {
+        // 현재 '.reveal' 요소의 상단 위치를 가져옵니다.
+        var revealtop = reveals[i].getBoundingClientRect().top;
+
+        // 요소가 화면에 나타나면
+        if (revealtop < windowheight - revealpoint) {
+          // '.reveal' 요소에 'active' 클래스를 추가하여 애니메이션을 시작합니다.
+          reveals[i].classList.add("active");
+
+          // 현재 '.reveal' 요소 내부의 '.cards'를 선택합니다.
+          var cards = reveals[i].querySelector(".cards");
+
+          // '.cards' 내부의 모든 '.text-card' 요소를 선택합니다.
+          var textCards = cards.querySelectorAll(".text-card");
+
+          // 모든 '.text-card' 요소를 순회합니다.
+          textCards.forEach((card, index) => {
+            // 카드가 현재 활성화되어 있지 않은 경우에만 애니메이션을 적용합니다.
+            if (!card.classList.contains("active")) {
+              // 각 카드가 순차적으로 애니메이션을 시작하도록 지연시간을 설정합니다.
+              setTimeout(() => {
+                card.classList.add("active");
+              }, index * 300); // 각 카드가 300ms 간격으로 애니메이션을 시작합니다.
+            }
+          });
+        } else {
+          // 요소가 화면에서 사라지면
+          // '.reveal' 요소에서 'active' 클래스를 제거하여 애니메이션을 중지합니다.
+          reveals[i].classList.remove("active");
+
+          // 현재 '.reveal' 요소 내부의 '.cards'를 선택합니다.
+          var cards = reveals[i].querySelector(".cards");
+
+          // '.cards' 내부의 모든 '.text-card' 요소를 선택합니다.
+          var textCards = cards.querySelectorAll(".text-card");
+
+          // 모든 '.text-card' 요소를 순회하며
+          textCards.forEach((card) => {
+            // 카드에서 'active' 클래스를 제거하여 애니메이션을 중지합니다.
+            card.classList.remove("active");
+          });
+        }
+      }
+    }
+  </script>
+</body>
+</html>

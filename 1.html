@@ -1,0 +1,56 @@
+<style>
+
+    #s20240729e9023257237ef{
+       min-height: 60vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }w20240729da301918581ef
+  /* 애니메이션 효과 */
+  #s20240729e9023257237ef #w20240729da301918581ef {
+    position: relative;
+    transform: translateY(200px); /* 스크롤 시 위로 이동할 거리 */
+    opacity: 0; /* 초기 투명도 */
+    transition: all 1s; /* 애니메이션 효과 */
+  }
+  
+  #s20240729e9023257237ef #w20240729da301918581ef.active {
+    transform: translateY(0); /* 애니메이션 시 원위치로 이동 */
+    opacity: 1; /* 애니메이션 시 완전 불투명  */
+  } 
+  </style>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 스크롤 이벤트가 발생할 때마다 reveal 함수가 호출되도록 설정합니다.
+    window.addEventListener("scroll", reveal);
+  
+    function reveal() {
+      // '#s20240729e9023257237ef' 섹션 내의 모든 이미지를 선택합니다.
+      var section = document.querySelector("#s20240729e9023257237ef");
+      if (!section) return; // 섹션이 없으면 함수 종료
+  
+      var images = section.querySelectorAll("#w20240729da301918581ef");
+  
+      // 현재 창의 높이를 가져옵니다.
+      var windowHeight = window.innerHeight;
+  
+      // 요소가 화면에 보이기 시작하는 임계점으로, 요소의 상단이 창의 높이에서 150px 떨어진 지점입니다.
+      var revealPoint = 150;
+  
+      images.forEach(image => {
+        // 현재 '#w20240729da301918581ef' 요소의 상단 위치를 가져옵니다.
+        var revealTop = image.getBoundingClientRect().top;
+  
+        // 요소가 화면에 나타나면
+        if (revealTop < windowHeight - revealPoint) {
+          // '#w20240729da301918581ef' 요소에 'active' 클래스를 추가하여 애니메이션을 시작합니다.
+          image.classList.add("active");
+        } else {
+          // 요소가 화면에서 사라지면
+          // '#w20240729da301918581ef' 요소에서 'active' 클래스를 제거하여 애니메이션을 중지합니다.
+          image.classList.remove("active");
+        }
+      });
+    }
+  });
+  </script>

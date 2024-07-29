@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <style>
+    body {
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+    }
+
+    /* 배경 */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      /* Semi-transparent background */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      /* Make sure it's on top */
+    }
+
+
+    /*  */
+    .popup-content {  
+      width: 100%;
+      max-width: 100%;
+      /* 최대 너비 설정 */
+      height: 390px;
+      /* 고정 높이 */
+      overflow: hidden;
+      /* 내용 넘침 방지 */
+      justify-content: center;
+      margin-top: 100px;
+    
+    }
+
+
+    .swiper-container {
+ 
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%; /* 링크가 슬라이드에 맞게 조정 */
+      height: 100%; /* 링크가 슬라이드에 맞게 조정 */
+    }
+
+    .swiper-slide {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px 20px 0 0; /* 슬라이드에 둥글게 테두리 설정 */
+      overflow: hidden; /* 내용이 둥글게 잘리도록 설정 */
+      width: 300px; /* 슬라이드 너비 */
+      height: 100%; /* 슬라이드 높이 */
+    }
+
+    .swiper-slide iframe {
+    
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+/* 제한 */
+      pointer-events: none; /* Disable pointer events */
+    }
+
+    .swiper-slide img{
+      width: 300px;
+      height: 300px;
+      background-size: cover;
+      /* 이미지가 슬라이드에 맞게 커버되도록 설정 */
+    }
+
+
+    /* 버튼시작 */
+    .button_cover {
+      background-color: #000;
+      height: 50px;
+      width: 300px;
+      margin: 0 auto;
+      position: relative;
+     
+ 
+
+    }
+
+    .close-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+      position: absolute;
+      left: 10px;
+      top: 15px;
+      font-weight: bold;
+    }
+
+
+    .dont-show-today-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+      position: absolute;
+      right: 10px;
+      top: 15px;
+      color: #fff;
+       font-weight: bold;
+    }
+
+    .popup-content {
+      right: 100px;
+      /* Positioned next to the close button */
+    }
+
+
+
+
+    .clostTop:focus {
+      outline: 0;
+    }
+
+
+    
+/* 엑스 버튼 */
+.clostTop {
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 20%; /* 버튼의 상단을 뷰포트의 10% 위치에 배치 */
+  left: 50%; /* 버튼의 왼쪽을 뷰포트의 50% 위치에 배치 */
+  transform: translate(-50%, -50%); /* 버튼의 가운데가 기준 위치에 맞게 조정 */
+  background-color: rgba(255, 255, 255, 0.8);
+
+}
+
+    .clostTop:before,
+    .clostTop:after {
+      content: "";
+      width: 40px;
+      height: 1px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .clostTop:before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+      background-color: #000;
+    }
+
+    .clostTop:after {
+      transform: translate(-50%, -50%) rotate(45deg);
+      background-color: #000;
+    }
+/* 모바일 */
+    @media (max-width: 768px) {
+
+    }
+/* 피씨버전 */
+    @media (min-width: 769px) {
+ 
+      .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      /* Semi-transparent background */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      /* Make sure it's on top */
+    }
+
+
+
+    .popup-content {
+  
+      width: 100%;
+      max-width: 100%;
+      /* 최대 너비 설정 */
+      height: 550px;
+      /* 고정 높이 */
+      overflow: hidden;
+      /* 내용 넘침 방지 */
+      justify-content: center;
+      margin-top: 50px;
+      
+    
+    }
+
+
+    .swiper-container {
+ 
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px 20px 0 0; /* 슬라이드에 둥글게 테두리 설정 */
+      overflow: hidden; /* 내용이 둥글게 잘리도록 설정 */
+      width: 500px; /* 슬라이드 너비 */
+      height: 500px; /* 슬라이드 높이 */
+    }
+
+    .swiper-slide a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%; /* 링크가 슬라이드에 맞게 조정 */
+      height: 100%; /* 링크가 슬라이드에 맞게 조정 */
+    }
+
+
+    .swiper-slide iframe {
+    
+      width: 500px;
+      height: 500px;
+      object-fit: cover;
+/* 제한 */
+      pointer-events: none; /* Disable pointer events */
+    }
+
+    .swiper-slide img{
+      width: 500px;
+      height: 500px;
+      background-size: cover;
+      /* 이미지가 슬라이드에 맞게 커버되도록 설정 */
+    }
+
+
+    /* 버튼시작 */
+    .button_cover {
+      background-color: #000;
+      height: 50px;
+      width: 500px;
+      margin: 0 auto;
+      position: relative;
+     
+ 
+
+    }
+
+    .close-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+      position: absolute;
+      left: 10px;
+      top: 13px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+
+    .dont-show-today-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+      position: absolute;
+      right: 10px;
+      top: 13px;
+      color: #fff;
+       font-weight: bold;
+       font-size: 18px;
+    }
+
+    .popup-content {
+      right: 100px;
+      /* Positioned next to the close button */
+    }
+
+
+
+
+    .clostTop:focus {
+      outline: 0;
+    }
+
+
+    
+/* 엑스 버튼 */
+.clostTop {
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 15%; /* 버튼의 상단을 뷰포트의 10% 위치에 배치 */
+  left: 50%; /* 버튼의 왼쪽을 뷰포트의 50% 위치에 배치 */
+  transform: translate(-50%, -50%); /* 버튼의 가운데가 기준 위치에 맞게 조정 */
+  background-color: rgba(255, 255, 255, 0.8);
+
+}
+
+    .clostTop:before,
+    .clostTop:after {
+      content: "";
+      width: 40px;
+      height: 1px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .clostTop:before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+      background-color: #000;
+    }
+
+    .clostTop:after {
+      transform: translate(-50%, -50%) rotate(45deg);
+      background-color: #000;
+    }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="popup-overlay" id="popup-overlay">
+    <button id="clost_top" class="clostTop"></button>
+    <div class="popup-content">
+
+      <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true"
+        space-between="10" centered-slides="true" slides-per-view="auto" autoplay-delay="2500"
+        autoplay-disable-on-interaction="false">
+	<!--여기부터 복사해서 사용하시면됩니다 
+  
+  1) 슬라이드 코드를 복사합니다! 
+  2) a href 여기는 가야할 사이트 링크 
+  3) img src 여기는 복사해온 이미지 링크 (이미지 보관함에 이미지를 올리고 이미지 링크를 복사해옵니다) 
+      입니다 . 잘하실거라고 믿습니다! 
+  --> 
+      <!--슬라이드 1  -->
+        <swiper-slide  class="swiper-slide">
+          <a href="https://digitalartdc.co.kr/landing" target="_blank">
+            <img src="https://cdn.imweb.me/upload/S2021020460b0ef649f001/6645874eea01c.gif" alt="Slide 1" />
+          </a>
+        </swiper-slide>
+
+       <!--슬라이드 2  --> 
+        <swiper-slide class="swiper-slide">
+          <a href="https://m.booking.naver.com/booking/6/bizes/153331?theme=place&area=pll" target="_blank">
+            <img src="https://cdn.imweb.me/upload/S2021020460b0ef649f001/1b0661544b95b.gif" alt="Slide 2" />
+          </a>
+        </swiper-slide>
+      
+      
+        <!--슬라이드 3 ( 이아이는 유투브 영상입니다 )  -->
+        <swiper-slide class="swiper-slide">
+          <iframe src="https://www.youtube.com/embed/cV3Bv9VzJEc?si=qD5qbL0jD7y0SVxb&start=205&autoplay=1&mute=1"
+          allow="autoplay; fullscreen" frameborder="0" allowfullscreen></iframe>
+  </iframe>
+        </swiper-slide>
+
+
+      </swiper-container>
+      <div class="button_cover">
+        <button class="close-btn">닫기</button>
+        <button class="dont-show-today-btn">오늘 하루 안 보기</button>
+      </div>
+    </div>
+
+
+  </div>
+<!--  -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 페이지의 모든 내용이 로드된 후 실행될 함수를 정의합니다.
+
+      // 쿠키를 확인하는 함수
+      function checkCookie() {
+        const cookieName = 'hideSwiper'; // 확인할 쿠키의 이름
+        const value = `; ${document.cookie}`; // 문서의 쿠키를 가져와서 문자열로 만듭니다.
+        const parts = value.split(`; ${cookieName}=`); // 쿠키 문자열을 이름을 기준으로 나눕니다.
+        if (parts.length === 2) return true; // 쿠키가 존재하면 true를 반환합니다.
+        return false; // 쿠키가 존재하지 않으면 false를 반환합니다.
+      }
+
+      // 쿠키를 설정하는 함수
+      function setCookie(name, value, days) {
+        let expires = ""; // 쿠키의 만료일자를 저장할 변수입니다.
+        if (days) {
+          const date = new Date(); // 현재 날짜를 가져옵니다.
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // 만료일자를 설정합니다.
+          expires = "; expires=" + date.toUTCString(); // 만료일자를 문자열로 변환하여 쿠키에 추가합니다.
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/"; // 쿠키를 설정합니다.
+      }
+
+      const popupOverlay = document.getElementById('popup-overlay'); // 팝업 오버레이 요소를 가져옵니다.
+      if (!checkCookie()) {
+        popupOverlay.style.display = 'flex'; // 쿠키가 없으면 팝업을 표시합니다.
+      }
+
+      document.querySelector('.clostTop').addEventListener('click', function () {
+        popupOverlay.style.display = 'none'; // 닫기 버튼을 클릭하면 팝업을 숨깁니다.
+      });
+
+
+      document.querySelector('.close-btn').addEventListener('click', function () {
+        popupOverlay.style.display = 'none'; // 닫기 버튼을 클릭하면 팝업을 숨깁니다.
+      });
+
+      document.querySelector('.dont-show-today-btn').addEventListener('click', function () {
+        setCookie('hideSwiper', 'true', 1); // "오늘 하루 안 보기" 버튼을 클릭하면 쿠키를 설정하여 팝업을 하루 동안 숨깁니다.
+        popupOverlay.style.display = 'none'; // 팝업을 숨깁니다.
+      });
+    });
+  </script>
+
+</body>
+
+</html>
