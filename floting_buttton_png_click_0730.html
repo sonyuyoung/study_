@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>플로팅버튼</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* 모든 요소의 기본 여백과 패딩을 제거 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 페이지의 기본 스타일 설정 */
+    body {
+      background: #fff;
+      /* 배경 색상 */
+      font-family: "Roboto", sans-serif;
+      /* 폰트 설정 */
+    }
+
+    /* 플로팅 버튼 컨테이너의 기본 스타일 ( 위에3개 ) */
+    .floating-container {
+      z-index: 1;
+      position: fixed;
+      /* 화면에 고정된 위치 */
+      width: 110px;
+      /* 컨테이너의 너비 */
+      height: 110px;
+      /* 컨테이너의 높이 */
+      bottom: 0;
+      /* 화면 하단에 위치 */
+      right: 25px;
+      /* 화면 우측에 위치 */
+      margin: 45px 0px;
+      justify-content: center;
+      align-items: center;
+      /* 화면 모서리에서 컨테이너까지의 여백 */
+    }
+
+    /* 마우스를 올렸을 때 플로팅 버튼의 스타일 */
+    .floating-container:hover .floating-button {
+      box-shadow: 0 0px 25px rgba(0, 0, 0, 0.7);
+      /* 그림자 효과 */
+      transform: translateY(5px);
+      /* 버튼을 5px 아래로 이동 */
+      transition: all 0.3s;
+      /* 모든 속성의 변화에 대해 0.3초 애니메이션 적용 */
+    }
+
+    /* 마우스를 올렸을 때의 플로팅 버튼 컨테이너 스타일 */
+    .floating-container.active {
+      height: 550px;
+      /* 컨테이너의 높이를 300px로 증가 */
+    }
+
+
+
+    .floating-button {
+      background-color:rgba(255, 255, 254, 0.7);
+      animation: bounce 2s infinite;
+      position: fixed;
+      /* 화면에 고정 */
+      /* 위치를 절대적으로 설정 */
+      width: 100px;
+      /* 적절한 크기로 조정 */
+      height: 100px;
+      /* 적절한 크기로 조정 */
+      background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/582156e869a41.png");
+      background-size: cover;
+      /* 이미지 크기에 맞게 조정 */
+      background-repeat: no-repeat;
+      /* 이미지 반복 방지 */
+      background-position: center;
+      /* 이미지 가운데 정렬 */
+      border-radius: 50%;
+      /* 원형 버튼 */
+      position: fixed;
+      /* 화면에 고정 */
+      bottom: 50px;
+      /* 화면 하단에서의 위치 조정 */
+      right: 40px;
+      /* 화면 우측에서의 위치 조정 */
+      z-index: 9;
+      /* 버튼이 다른 요소들보다 위에 오도록 설정 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      /* 그림자 효과 (선택 사항) */
+      cursor: pointer;
+      /* 마우스 커서를 포인터로 변경 */
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: translateY(0%);
+
+        height: 100px;
+      }
+
+      25% {
+        transform: translateY(20px);
+        height: 95px;
+      }
+
+      50% {
+        transform: translateY(0%);
+        height: 100px;
+      }
+
+      75% {
+        transform: translateY(20px);
+
+        height: 95px;
+      }
+
+      100% {
+        transform: translateY(0px);
+        height: 100px;
+      }
+    }
+
+    /* 플로팅 아이콘 요소의 기본 스타일 */
+    .float-element {
+      background-color:rgba(255, 255, 254, 0.7);
+      display: block;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      color: white;
+      margin: 15px 0px;
+      background-size: cover;
+      background-position: center;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 1;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      /* 호버 시 부드러운 변화 */
+    }
+
+    .float-element a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .float-element:hover {
+      transform: scale(1.2);
+    }
+
+    /* 첫 번째 플로팅 아이콘의 스타일 비용상담*/
+    .float-element:nth-of-type(1) {
+ 
+
+      background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/ab9bc25239be5.png");
+      /* 채팅 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(2, 2, 2, 0.5);
+      /* 그림자 효과 */
+    }
+
+    /* 두 번째 플로팅 아이콘의 스타일 오시는길 */
+    .float-element:nth-of-type(2) {
+      background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/e7200e5297e0c.png");
+      /* 전화 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(2, 2, 2, 0.5);
+      /* 그림자 효과 */
+   
+    }
+
+    /* 세 번째 플로팅 아이콘의 스타일 전화 */
+    .float-element:nth-of-type(3) {
+
+      background-image: url("	https://cdn.imweb.me/upload/S2021020460b0ef649f001/1908b095a67ee.png");
+      /* 이메일 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(2, 2, 2, 0.5);
+      /* 그림자 효과 */
+    }
+
+    /* 세 번째 플로팅 아이콘의 스타일 유투브 */
+    .float-element:nth-of-type(4) {
+      background-image: url("	https://cdn.imweb.me/upload/S2021020460b0ef649f001/13475280e2c76.png");
+      /* 채팅 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(2, 2, 2, 0.5);
+      /* 그림자 효과 */
+    }
+
+    /* 세 번째 플로팅 아이콘의 스타일 */
+    .float-element:nth-of-type(5) {
+      background-image: url("	https://cdn.imweb.me/upload/S2021020460b0ef649f001/6b556110054a4.png");
+      /* 채팅 아이콘 이미지 */
+      box-shadow: 0 20px 20px -10px rgba(2, 2, 2, 0.5);
+      /* 그림자 효과 */
+    }
+
+
+    /* 플로팅 아이콘의 애니메이션 */
+    @keyframes come-in {
+      0% {
+        opacity: 0;
+        /* 애니메이션 시작 시 투명함 */
+      }
+
+      30% {
+        transform: translateX(-50%) scale(0.4);
+        /* 애니메이션 중간에 아이콘이 왼쪽으로 이동하고 축소됨 */
+      }
+
+      70% {
+        transform: translateX(0%) scale(1.2);
+        /* 애니메이션 후반에 아이콘이 원위치로 돌아오고 확대됨 */
+      }
+
+      100% {
+        transform: scale(1);
+        /* 애니메이션 완료 시 원래 크기로 돌아옴 */
+        opacity: 1;
+        /* 애니메이션 완료 시 완전히 보임 */
+      }
+    }
+
+    /* 클릭 시 아이콘 애니메이션 */
+    .floating-container.active .float-element {
+      transform: translateY(0);
+      /* 애니메이션 완료 시 원래 위치로 돌아옴 */
+    }
+
+    /* 클릭 시 첫 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(1) {
+      animation: come-in 0.4s forwards 0.2s;
+      /* 애니메이션을 0.4초 동안 실행, 0.2초 지연 후 시작 */
+    }
+
+    /* 클릭 시 두 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(2) {
+      animation: come-in 0.4s forwards 0.4s;
+      /* 애니메이션을 0.4초 동안 실행, 0.4초 지연 후 시작 */
+    }
+
+    /* 클릭 시 세 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(3) {
+      animation: come-in 0.4s forwards 0.6s;
+      /* 애니메이션을 0.4초 동안 실행, 0.6초 지연 후 시작 */
+    }
+
+    /* 클릭 시 세 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(4) {
+      animation: come-in 0.4s forwards 0.8s;
+      /* 애니메이션을 0.4초 동안 실행, 0.6초 지연 후 시작 */
+    }
+
+    /* 클릭 시 세 번째 아이콘의 애니메이션 */
+    .floating-container.active .float-element:nth-of-type(5) {
+      animation: come-in 0.4s forwards 1s;
+      /* 애니메이션을 0.4초 동안 실행, 0.6초 지연 후 시작 */
+    }
+
+
+
+    /* 오버레이 스타일 */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    /* 모바일 및 작은 화면을 위한 스타일 조정 */
+    @media (max-width: 768px) {
+      .floating-container {
+        width: 85px;
+        right: 0px;
+
+        /* 화면 모서리에서 컨테이너까지의 여백 */
+      }
+
+
+
+
+      .float-element {
+
+        width: 55px;
+        /* 아이콘의 너비 */
+        height: 55px;
+        right: 0px;
+        /* 아이콘 텍스트의 크기 */
+        margin: 10px 0px;
+        /* 아이콘 사이의 여백 */
+      }
+
+
+
+
+      .floating-button {
+
+        width: 80px;
+        /* 적절한 크기로 조정 */
+        height: 80px;
+
+        /* 화면 하단에서의 위치 조정 */
+        right: 15px;
+
+      }
+
+      @keyframes bounce {
+        0% {
+          transform: translateY(0%);
+
+          height: 80px;
+        }
+
+        25% {
+          transform: translateY(20px);
+          height: 75px;
+        }
+
+        50% {
+          transform: translateY(0%);
+          height: 80px;
+        }
+
+        75% {
+          transform: translateY(20px);
+          height: 75px;
+        }
+
+        100% {
+          transform: translateY(0px);
+          height: 80px;
+        }
+      }
+
+      .floating-container.active {
+        height: 380px;
+      }
+
+      .overlay.active {
+
+        opacity: 1;
+        visibility: visible;
+
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 플로팅 버튼 컨테이너 -->
+  <div class="floating-container">
+    <!-- 플로팅 버튼 -->
+    <div class="floating-button"></div>
+    <!-- 플로팅 아이콘들 -->
+    <span class="float-element">
+      <a href="tel:+515158267" title="전화하기"></a>
+    </span>
+
+    <span class="float-element">
+      <a href="javascript:SITE.openModalMenu('m2023052529e3c766ef891');" title="비용상담"></a> </span>
+
+      <span class="float-element">
+        <a href="https://diatest.imweb.me/Equipment" title="오시는길"></a>
+      </span>
+
+    <span class="float-element">
+      <a href="https://www.youtube.com/@digitalartdental" title="유투브"></a>
+    </span>
+
+
+  </div>
+  <div class="overlay"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const floatingButton = document.querySelector(".floating-button");
+      const floatingContainer = document.querySelector(".floating-container");
+      const overlay = document.querySelector(".overlay");
+
+      floatingButton.addEventListener("click", () => {
+        floatingContainer.classList.toggle("active");
+        overlay.classList.toggle("active");
+      });
+
+      // Close the floating container and overlay if clicking outside
+      document.addEventListener("click", (event) => {
+        if (!floatingContainer.contains(event.target) && !floatingButton.contains(event.target)) {
+          floatingContainer.classList.remove("active");
+          overlay.classList.remove("active");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

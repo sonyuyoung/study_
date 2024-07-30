@@ -44,7 +44,7 @@
 
       /* 마우스를 올렸을 때 플로팅 버튼의 스타일 */
       .floating-container:hover .floating-button {
-        box-shadow: 0 10px 25px rgba(44, 179, 240, 0.6);
+        box-shadow: 0 0px 25px rgba(0, 0, 0, 0.7);
         /* 그림자 효과 */
         transform: translateY(5px);
         /* 버튼을 5px 아래로 이동 */
@@ -83,6 +83,7 @@
         }
       }
       .floating-button {
+        background-color: #eee;
         animation: bounce 2s infinite;
         position: fixed; /* 화면에 고정 */
         /* 위치를 절대적으로 설정 */
@@ -90,7 +91,10 @@
         /* 적절한 크기로 조정 */
         height: 120px;
         /* 적절한 크기로 조정 */
-        background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/657e4572493e0.png");
+       /* background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/804b7e64c1adb.png");*/
+        /*  background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/34accbf0a6598.png");
+       /* background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/0cb7ae5b90221.png");*/
+       background-image: url("https://cdn.imweb.me/upload/S2021020460b0ef649f001/12844f3bf31bf.png");
         background-size: cover;
         /* 이미지 크기에 맞게 조정 */
         background-repeat: no-repeat;
@@ -119,7 +123,7 @@
         /* 위치를 절대적으로 설정 */
         display: block;
         /* 블록 요소로 표시 */
-        border-radius: 50%;
+        border-radius: 20%;
         /* 아이콘을 원형으로 만들기 위한 테두리 반경 설정 */
         width: 80px;
         /* 아이콘의 너비 */
@@ -230,24 +234,27 @@
         }
 
         .floating-button {
-          width: 120px;
-          /* 버튼의 너비 */
-          height: 120px;
-          /* 버튼의 높이 */
-          line-height: 45px;
-          /* 텍스트의 수직 정렬을 중앙으로 설정 */
-          font-size: 18px;
-          /* 텍스트의 크기 */
-          bottom: 50px;
-          /* 화면 하단에서의 위치 조정 */
-          right: 20px;
-          /* 화면 우측에서의 위치 조정 */
-        }
+    
+        width: 120px;
+        /* 적절한 크기로 조정 */
+        height: 50px;
+        /* 화면에 고정 */
+        bottom: 50px;
+        /* 화면 하단에서의 위치 조정 */
+        right: 30px;
+        /* 화면 우측에서의 위치 조정 */
+        z-index: 100;
+        /* 버튼이 다른 요소들보다 위에 오도록 설정 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* 그림자 효과 (선택 사항) */
+        cursor: pointer;
+        /* 마우스 커서를 포인터로 변경 */
+      }
 
         .float-element {
-          width: 100px;
+          width: 90px;
           /* 아이콘의 너비 */
-          height: 100px;
+          height: 90px;
           /* 아이콘의 높이 */
           font-size: 20px;
           /* 아이콘 텍스트의 크기 */
@@ -264,28 +271,27 @@
 
       /* 모바일 및 더 작은 화면을 위한 스타일 조정 */
       @media (max-width: 480px) {
+        
         .floating-container {
           width: 100px;
           /* 컨테이너의 너비 */
           height: 100px;
           /* 컨테이너의 높이 */
           margin: 15px 0px;
-
           /* 화면 모서리에서 컨테이너까지의 여백 */
-        padding: 10px;
         }
 
         .floating-button {
-          width: 100px;
+          width: 10px;
           /* 버튼의 너비 */
           height: 100px;
           /* 버튼의 높이 */
-
+      
           /* 텍스트의 수직 정렬을 중앙으로 설정 */
           font-size: 16px;
           right: 30px;
           /* 텍스트의 크기 */
-       
+          
         }
 
         .float-element {
