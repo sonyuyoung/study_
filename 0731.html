@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Layout</title>
+    <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column; /* 세로 방향으로 배치 */
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            height: 100vh; /* 뷰포트 높이 전체 사용 */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row; /* 기본적으로 가로 방향으로 배치 */
+            gap: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            width: 100%; /* 컨테이너가 부모 요소의 너비를 차지하도록 설정 */
+            justify-content: center; /* 카드들을 가로로 중앙 정렬 */
+            align-items: center;
+            flex-wrap: wrap; /* 카드들이 여러 줄로 나뉘도록 설정 */
+        }
+
+        /* 카드 기본 스타일 */
+        .card3, .card4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 100px;
+            padding: 20px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(150px) scale(0.8);
+            transition: all 1s ease;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .card3 {
+            width: calc(50% - 100px); /* 한 줄에 2개 배치, 간격을 고려하여 너비 설정 */
+            height: 190px; /* 카드의 높이 */
+            margin-bottom: 20px; /* 아래쪽 여백 추가 */
+        }
+
+
+        .card4 {
+            width: 500px; /* 카드의 너비 */
+            height: 190px; /* 카드의 높이 */
+        }
+
+        .card3.active, .card4.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* 카드 애니메이션 지연 설정 */
+        .card3:nth-child(1).active { transition-delay: 0s; }
+        .card3:nth-child(2).active { transition-delay: 0.2s; }
+        .card3:nth-child(3).active { transition-delay: 0.6s; }
+        .card3:nth-child(4).active { transition-delay: 0.8s; }
+
+        .card4:nth-child(1).active { transition-delay: 0s; }
+        .card4:nth-child(2).active { transition-delay: 0.2s; }
+        .card4:nth-child(3).active { transition-delay: 0.4s; }
+        .card4:nth-child(4).active { transition-delay: 0.6s; }
+
+        .under_desc {
+            font-size: 35px;
+            font-weight: 400;
+            color: #3772ed;
+        }
+
+        /* 반응형 설정: 모바일 (900px 이하) */
+        @media (max-width: 900px) {
+            .card3, .card4 {
+                width: 180px;
+                height: 180px;
+            }
+
+            .under_desc {
+                font-size: 16px;
+            }
+        }
+
+        /* 반응형 설정: 모바일 (480px 이하) */
+        @media (max-width: 480px) {
+            .card3, .card4 {
+                width: 150px;
+                height: 150px;
+            }
+
+            .under_desc {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <!-- 첫 번째 세로 컨테이너 -->
+        <div class="container">
+            <div class="card4">
+                <div class="text-card">
+                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
+                </div>
+            </div>
+            <div class="card4">
+                <div class="text-card">
+                    <p class="under_desc">환자의 상처 노출을 최소화</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 두 번째 세로 컨테이너 -->
+        <div class="container">
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">환자의 상처 노출을 최소화</p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">최소한의 임플란트 식립과<br>뼈이식을 최소로 진행</p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">상처치유와 회복이 빠르게</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <!-- 첫 번째 세로 컨테이너 -->
+        <div class="container">
+            <div class="card4">
+                <div class="text-card">
+                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
+                </div>
+            </div>
+            <div class="card4">
+                <div class="text-card">
+                    <p class="under_desc">환자의 상처 노출을 최소화</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 두 번째 세로 컨테이너 -->
+        <div class="container">
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">환자의 상처 노출을 최소화</p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">최소한의 임플란트 식립과<br>뼈이식을 최소로 진행</p>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="text-card2">
+                    <p class="under_desc">상처치유와 회복이 빠르게</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.addEventListener("scroll", reveal);
+
+            function reveal() {
+                var cards = document.querySelectorAll(".card3, .card4");
+                var windowHeight = window.innerHeight;
+                var revealPoint = 150;
+
+                cards.forEach(card => {
+                    var revealTop = card.getBoundingClientRect().top;
+
+                    if (revealTop < windowHeight - revealPoint) {
+                        card.classList.add("active");
+                    } else {
+                        card.classList.remove("active");
+                    }
+                });
+            }
+
+            // Initial check
+            reveal();
+        });
+    </script>
+</body>
+
+</html>
