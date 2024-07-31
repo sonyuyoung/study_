@@ -1,218 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Card Layout</title>
     <style>
-        body {
-            font-family: "Noto Sans KR", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+      }
 
-        section {
-            display: flex;
-            flex-direction: column; /* 세로 방향으로 배치 */
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            height: 100vh; /* 뷰포트 높이 전체 사용 */
-        }
+      section {
+        height: 60vw;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
 
-        .container {
-            display: flex;
-            flex-direction: row; /* 기본적으로 가로 방향으로 배치 */
-            gap: 20px;
-            padding: 20px;
-            box-sizing: border-box;
-            width: 100%; /* 컨테이너가 부모 요소의 너비를 차지하도록 설정 */
-            justify-content: center; /* 카드들을 가로로 중앙 정렬 */
-            align-items: center;
-            flex-wrap: wrap; /* 카드들이 여러 줄로 나뉘도록 설정 */
-        }
+      .container {
+        display: flex;
+        flex-wrap: wrap; /* 줄 바꿈 허용 */
+        justify-content: center; /* 카드들을 중앙 정렬 */
+        width: 100%;
+        max-width: 1200px; /* 전체 최대 너비 설정 */
+      }
 
-        /* 카드 기본 스타일 */
-        .card3, .card4 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 100px;
-            padding: 20px;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(150px) scale(0.8);
-            transition: all 1s ease;
-            text-align: center;
-            box-sizing: border-box;
-        }
+      .container_1 {
+        display: flex;
+        flex-wrap: wrap; /* 줄 바꿈 허용 */
+        justify-content: center; /* 카드들을 중앙 정렬 */
+        width: 100%;
+        max-width: 1200px; /* 전체 최대 너비 설정 */
+        margin-bottom: 100px;
+      }
 
-        .card3 {
-            width: calc(50% - 100px); /* 한 줄에 2개 배치, 간격을 고려하여 너비 설정 */
-            height: 190px; /* 카드의 높이 */
-            margin-bottom: 20px; /* 아래쪽 여백 추가 */
-        }
+      .container_1 .card_text {
+        font-size: 24px;
+        text-align: center;
+        font-weight: 300;
+        width: 1000px;
+        margin-top: 100px;
+      }
 
+      /* container_1 카드 스타일 */
+      .container_1 .card1 {
+        width: 450px; /* 2개씩 배치되도록 너비 설정 */
+        height: 200px; /* 카드 높이 */
+        background-color: #fff; /* 배경색 흰색 */
+        color: #000; /* 텍스트 색상 검정 */
+        padding-bottom: 10px;
+        border-radius: 50px;
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        font-size: 35px; /* 폰트 크기 설정 */
+        box-sizing: border-box; /* 테두리와 패딩을 너비와 높이에 포함 */
+      }
 
-        .card4 {
-            width: 500px; /* 카드의 너비 */
-            height: 190px; /* 카드의 높이 */
-        }
+      .container_1 .card2 {
+        width: 700px; /* 2개씩 배치되도록 너비 설정 */
+        height: 200px; /* 카드 높이 */
+        margin-top: 200px;
+        background-color: #3772ed; /* 배경색 흰색 */
+        color: #fff; /* 텍스트 색상 검정 */
+        padding-bottom: 10px;
+        border-radius: 50px;
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        font-size: 35px; /* 폰트 크기 설정 */
+        box-sizing: border-box; /* 테두리와 패딩을 너비와 높이에 포함 */
+      }
 
-        .card3.active, .card4.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
+      .card3,
+      .card4,
+      .card5,
+      .card6 {
+        text-align: center;
+        margin: 10px;
+        padding-bottom: 10px;
+        border-radius: 30px;
+        overflow: hidden;
 
-        /* 카드 애니메이션 지연 설정 */
-        .card3:nth-child(1).active { transition-delay: 0s; }
-        .card3:nth-child(2).active { transition-delay: 0.2s; }
-        .card3:nth-child(3).active { transition-delay: 0.6s; }
-        .card3:nth-child(4).active { transition-delay: 0.8s; }
+        opacity: 0;
+        width: calc(50% - 20px); /* 2개씩 배치되도록 너비 설정 */
+        height: 192px; /* 카드 높이 */
+        font-size: 35px; /* 폰트 크기 설정 */
+        box-sizing: border-box; /* 테두리와 패딩을 너비와 높이에 포함 */
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        transform: scale(0.5);
+      }
 
-        .card4:nth-child(1).active { transition-delay: 0s; }
-        .card4:nth-child(2).active { transition-delay: 0.2s; }
-        .card4:nth-child(3).active { transition-delay: 0.4s; }
-        .card4:nth-child(4).active { transition-delay: 0.6s; }
+      .container .card3,
+      .container .card6 {
+        background-color: #fff; /* 배경색 흰색 */
+        color: #424242; /* 텍스트 색상 검정 */
+      }
 
-        .under_desc {
-            font-size: 35px;
-            font-weight: 400;
-            color: #3772ed;
-        }
+      .container .card4,
+      .container .card5 {
+        background-color: #3772ed; /* 배경색 파란색 */
+        color: #fff; /* 텍스트 색상 흰색 */
+      }
 
-        /* 반응형 설정: 모바일 (900px 이하) */
-        @media (max-width: 900px) {
-            .card3, .card4 {
-                width: 180px;
-                height: 180px;
-            }
+      .card1.active,
+      .card2.active,
+      .card3.active,
+      .card4.active,
+      .card5.active,
+      .card6.active {
+        opacity: 1;
+        transform: scale(1);
+      }
 
-            .under_desc {
-                font-size: 16px;
-            }
-        }
+      .container_1 .card1 {
+        transition-delay: 0.2s;
+      }
+      .container_1 .card2 {
+        transition-delay: 0.4s;
+      }
 
-        /* 반응형 설정: 모바일 (480px 이하) */
-        @media (max-width: 480px) {
-            .card3, .card4 {
-                width: 150px;
-                height: 150px;
-            }
+      .container .card3 {
+        transition-delay: 0.6s;
+      }
+      .container .card4 {
+        transition-delay: 0.8s;
+      }
+      .container .card5 {
+        transition-delay: 1.2s;
+      }
+      .container .card6 {
+        transition-delay: 1.4s;
+      }
 
-            .under_desc {
-                font-size: 14px;
-            }
-        }
+      .text-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 10px;
+      }
+      .text-card2 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 10px;
+      }
+
+      /*  당뇨 임플란트*/
+      .card1 .under_desc {
+        font-weight: 300;
+      }
+      /* 뭐가다른가요 */
+      .f_title {
+        font-weight: 800;
+        font-size: 45px;
+      }
+
+      /* 당뇨환자는 면역력어쩌구 */
+      .f_title2 {
+        font-size: 35px;
+        font-weight: 500;
+        display: inline-block;
+      }
+      /* 세심한배려가 .. */
+      .card2 .under_desc {
+        font-size: 35px;
+        font-weight: 300;
+      }
+
+      .container .under_desc {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      .img_arrow {
+        display: inline-block;
+        width: 100px;
+        height: 40px;
+      }
+      .img_arrow img {
+        width: 100%;
+        height: auto;
+      }
     </style>
-</head>
+  </head>
+  <body>
+    <section></section>
+    <section>
+      <div class="container_1">
+        <div class="card1">
+          <div class="text-card">
+            <p class="under_desc">
+              당뇨임플란트<br /><span class="f_title">뭐가 다른가요?</span>
+            </p>
+          </div>
+        </div>
+        <div class="card2">
+          <div class="text-card">
+            <p class="img_arrow">
+              <img src="arrow.png" alt="화살표" />
+            </p>
+            <p class="under_desc">
+              당뇨 환자는 면역력이 정상인의 절반이기에<br />
+              <span class="f_title2"> 세심한 제어가 필요합니다.</span>
+            </p>
+          </div>
+        </div>
+        <p class="card_text">
+          전체 임플란트의 경우 최소 임플란트 식립과 이러한 최소 침습적 치료를
+          병행하여 환자의 상처가 노출되는 것을 최소화 하고, 최소한의임플란트를
+          식립하며 뼈이식을 최소로 진행하여 상처치유와 회복이 빠르게 되기위한
+          방식으로 접근하는 것이 굉장히 중요합니다.
+        </p>
+      </div>
 
-<body>
-    <section>
-        <!-- 첫 번째 세로 컨테이너 -->
-        <div class="container">
-            <div class="card4">
-                <div class="text-card">
-                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
-                </div>
-            </div>
-            <div class="card4">
-                <div class="text-card">
-                    <p class="under_desc">환자의 상처 노출을 최소화</p>
-                </div>
-            </div>
+      <!-- 두 번째 세로 컨테이너 -->
+      <div class="container">
+        <div class="card3">
+          <div class="text-card2">
+            <p class="under_desc">
+              최소 임플란트 식립<br />최소 침습적 치료 병행
+            </p>
+          </div>
         </div>
-        
-        <!-- 두 번째 세로 컨테이너 -->
-        <div class="container">
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
-                </div>
-            </div>
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">환자의 상처 노출을 최소화</p>
-                </div>
-            </div>
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">최소한의 임플란트 식립과<br>뼈이식을 최소로 진행</p>
-                </div>
-            </div>
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">상처치유와 회복이 빠르게</p>
-                </div>
-            </div>
+        <div class="card4">
+          <div class="text-card2">
+            <p class="under_desc">환자의 상처 노출을 최소화</p>
+          </div>
         </div>
+        <div class="card5">
+          <div class="text-card2">
+            <p class="under_desc">
+              최소한의 임플란트 식립과<br />뼈이식을 최소로 진행
+            </p>
+          </div>
+        </div>
+        <div class="card6">
+          <div class="text-card2">
+            <p class="under_desc">상처치유와 회복이 빠르게</p>
+          </div>
+        </div>
+      </div>
     </section>
-    <section>
-        <!-- 첫 번째 세로 컨테이너 -->
-        <div class="container">
-            <div class="card4">
-                <div class="text-card">
-                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
-                </div>
-            </div>
-            <div class="card4">
-                <div class="text-card">
-                    <p class="under_desc">환자의 상처 노출을 최소화</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 두 번째 세로 컨테이너 -->
-        <div class="container">
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">최소 임플란트 식립<br>최소 침습적 치료 병행</p>
-                </div>
-            </div>
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">환자의 상처 노출을 최소화</p>
-                </div>
-            </div>
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">최소한의 임플란트 식립과<br>뼈이식을 최소로 진행</p>
-                </div>
-            </div>
-            <div class="card3">
-                <div class="text-card2">
-                    <p class="under_desc">상처치유와 회복이 빠르게</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            window.addEventListener("scroll", reveal);
+      document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener("scroll", reveal);
 
-            function reveal() {
-                var cards = document.querySelectorAll(".card3, .card4");
-                var windowHeight = window.innerHeight;
-                var revealPoint = 150;
+        function reveal() {
+          var cards = document.querySelectorAll(
+            ".card1, .card2, .card3, .card4, .card5, .card6"
+          );
+          var windowHeight = window.innerHeight;
+          var revealPoint = 150;
 
-                cards.forEach(card => {
-                    var revealTop = card.getBoundingClientRect().top;
+          cards.forEach((card) => {
+            var revealTop = card.getBoundingClientRect().top;
 
-                    if (revealTop < windowHeight - revealPoint) {
-                        card.classList.add("active");
-                    } else {
-                        card.classList.remove("active");
-                    }
-                });
+            if (revealTop < windowHeight - revealPoint) {
+              card.classList.add("active");
+            } else {
+              card.classList.remove("active");
             }
+          });
+        }
 
-            // Initial check
-            reveal();
-        });
+        // 페이지 로드 시 초기 체크
+        reveal();
+      });
     </script>
-</body>
-
+  </body>
 </html>
